@@ -171,86 +171,86 @@ verifyPaymentCallback(6000, (error, success) => {
 
 
 
-// // ----------------------------
-// // 3. PROMISES (ES6 style)
-// // ----------------------------
+// ----------------------------
+// 3. PROMISES (ES6 style)
+// ----------------------------
 
-// // Function that checks payment but returns a Promise instead of using callbacks
-// function verifyPaymentPromise(orderTotal) {
-//   // Log that we are starting verification
-//   console.log(`Verifying payment of $${orderTotal}...`);
+// Function that checks payment but returns a Promise instead of using callbacks
+function verifyPaymentPromise(orderTotal) {
+  // Log that we are starting verification
+  console.log(`Verifying payment of $${orderTotal}...`);
 
-//   // Return a new Promise object
-//   return new Promise((resolve, reject) => {
-//     // Simulate async delay with setTimeout
-//     setTimeout(() => {
-//       // Resolve if order is less than 5000
-//       if (orderTotal < 5000) {
-//         resolve(`Payment of $${orderTotal} verified successfully`);
-//       } else {
-//         // Reject if order is 5000 or more
-//         reject(`Payment of $${orderTotal} requires manager approval`);
-//       }
-//     }, 2000); 
-//   });
-// }
+  // Return a new Promise object
+  return new Promise((resolve, reject) => {
+    // Simulate async delay with setTimeout
+    setTimeout(() => {
+      // Resolve if order is less than 5000
+      if (orderTotal < 5000) {
+        resolve(`Payment of $${orderTotal} verified successfully`);
+      } else {
+        // Reject if order is 5000 or more
+        reject(`Payment of $${orderTotal} requires manager approval`);
+      }
+    }, 2000); 
+  });
+}
 
-// // Call the promise function with 3000
-// verifyPaymentPromise(3000)
-//   .then(message => {
-//     // .then runs if the promise was resolved
-//     console.log("Success:", message);
-//   })
-//   .catch(error => {
-//     // .catch runs if the promise was rejected
-//     console.log("Error:", error);
-//   });
+// Call the promise function with 3000
+verifyPaymentPromise(3000)
+  .then(message => {
+    // .then runs if the promise was resolved
+    console.log("Success:", message);
+  })
+  .catch(error => {
+    // .catch runs if the promise was rejected
+    console.log("Error:", error);
+  });
 
-// // Call the promise function with 6000
-// verifyPaymentPromise(6000)
-//   .then(message => {
-//     console.log("Success:", message);
-//   })
-//   .catch(error => {
-//     console.log("Error:", error);
-//   });
+// Call the promise function with 6000
+verifyPaymentPromise(6000)
+  .then(message => {
+    console.log("Success:", message);
+  })
+  .catch(error => {
+    console.log("Error:", error);
+  });
 
 
 
-// // ----------------------------
-// // 4. ASYNC / AWAIT (ES8 style)
-// // ----------------------------
+// ----------------------------
+// 4. ASYNC / AWAIT (ES8 style)
+// ----------------------------
 
-// // Function that returns a promise (same logic as before)
-// function verifyPaymentAsync(orderTotal) {
-//   console.log(`Verifying payment of $${orderTotal}...`);
+// Function that returns a promise (same logic as before)
+function verifyPaymentAsync(orderTotal) {
+  console.log(`Verifying payment of $${orderTotal}...`);
 
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       if (orderTotal < 5000) {
-//         resolve(`Payment of $${orderTotal} verified successfully`);
-//       } else {
-//         reject(`Payment of $${orderTotal} requires manager approval`);
-//       }
-//     }, 2000); 
-//   });
-// }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (orderTotal < 5000) {
+        resolve(`Payment of $${orderTotal} verified successfully`);
+      } else {
+        reject(`Payment of $${orderTotal} requires manager approval`);
+      }
+    }, 2000); 
+  });
+}
 
-// // Async function lets us "wait" for the promise result
-// async function handlePayments() {
-//   try {
-//     // Wait for the promise with order 3000
-//     const result1 = await verifyPaymentAsync(3000);
-//     console.log("Success:", result1);
+// Async function lets us "wait" for the promise result
+async function handlePayments() {
+  try {
+    // Wait for the promise with order 3000
+    const result1 = await verifyPaymentAsync(3000);
+    console.log("Success:", result1);
 
-//     // Wait for the promise with order 6000
-//     const result2 = await verifyPaymentAsync(6000);
-//     console.log("Success:", result2);
-//   } catch (error) {
-//     // If either call fails, handle the error here
-//     console.log("Error:", error);
-//   }
-// }
+    // Wait for the promise with order 6000
+    const result2 = await verifyPaymentAsync(6000);
+    console.log("Success:", result2);
+  } catch (error) {
+    // If either call fails, handle the error here
+    console.log("Error:", error);
+  }
+}
 
-// // Run the async function
-// handlePayments();
+// Run the async function
+handlePayments();
